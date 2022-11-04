@@ -38,3 +38,6 @@
 
 ## Arquitetura Backend
 - será um monolito 
+
+- usaremos o server-shelf 
+  - dart create -t server-shelf ./nome_projeto

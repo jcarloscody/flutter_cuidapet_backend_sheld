@@ -1,7 +1,4 @@
 import 'package:get_it/get_it.dart';
-import 'package:get_it_injectable_example/app/models/random_factory_model.dart';
-import 'package:get_it_injectable_example/app/models/random_lazy_singleton_model.dart';
-import 'package:get_it_injectable_example/app/models/random_singleton_model.dart';
 import 'package:injectable/injectable.dart';
 import 'service_locator.config.dart';
 
@@ -15,12 +12,12 @@ import 'service_locator.config.dart';
 //       () => RandomLazySingletonModel()); //inicialização preguiçosa
 // }
 
-final get_It = GetIt.instance;
+final getIt2 = GetIt.instance;
 
 @InjectableInit(
     initializerName: r'$initGetIt',
     preferRelativeImports: true,
     asExtension: false)
 void configureDependencies2() =>
-    $initGetIt(get_It); // deve rodar o ->> flutter pub run build_runner watch
+    $initGetIt(getIt2); // deve rodar o ->> flutter pub run build_runner watch
 

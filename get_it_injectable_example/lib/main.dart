@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
-import 'package:get_it_injectable_example/app/core/service_locator.dart';
 import 'package:get_it_injectable_example/app/models/random_factory_model.dart';
 
 void main() {
@@ -47,7 +46,7 @@ class _MyHomePageState extends State<MyHomePage> {
           children: [
             Text(id.toString()),
             Text(name),
-            Divider(),
+            const Divider(),
             TextButton(
                 onPressed: () {
                   var instance = GetIt.I.get<RandomFactoryModel>();
@@ -56,7 +55,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     name = instance.name;
                   });
                 },
-                child: Text('Aqui')),
+                child: const Text('Aqui')),
           ],
         ),
       ),
