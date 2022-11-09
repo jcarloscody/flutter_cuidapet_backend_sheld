@@ -1,4 +1,6 @@
 import 'package:cuidapet_api/application/config/database_connection_configuration.dart';
+import 'package:cuidapet_api/application/logger/i_logger.dart';
+import 'package:cuidapet_api/application/logger/i_logger_impl.dart';
 import 'package:dotenv/dotenv.dart';
 import 'package:get_it/get_it.dart';
 
@@ -17,5 +19,7 @@ class ApplicationConfig {
     );
 
     GetIt.I.registerSingleton(databaseConfig);
+
+    GetIt.I.registerLazySingleton<ILogger>(() => ILoggerImpl());
   }
 }

@@ -4,6 +4,7 @@
 - mysql1
 - get_it : ver os exemplos
   - // deve rodar o ->> flutter pub run build_runner watch ou flutter pub run build_runner watch --delete-conflicting-outputs
+- logger
 
 
 # launch.json
