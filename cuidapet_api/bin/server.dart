@@ -20,8 +20,8 @@ Response _echoHandler(Request request) {
 }
 
 void main(List<String> args) async {
-  final appConfig = ApplicationConfig();
-  appConfig.loadConfigApplication();
+  //carregar as configurações do aplicativo
+  ApplicationConfig.loadConfigApplication();
 
   // Use any available host or container IP (usually `0.0.0.0`).
   final ip = InternetAddress.anyIPv4;

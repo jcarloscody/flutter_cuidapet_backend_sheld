@@ -1,12 +1,21 @@
+import 'package:cuidapet_api/application/config/database_connection_configuration.dart';
 import 'package:dotenv/dotenv.dart';
+import 'package:get_it/get_it.dart';
 
 class ApplicationConfig {
-  Future<void> loadConfigApplication() async {
-    await _loadEnv();
+  static void loadConfigApplication() {
     var env = DotEnv(includePlatformEnvironment: true)..load();
-    print(env['url_banco_de_dados']);
-  }
+    // print(env['url_banco_de_dados']);
+    //print(env['JAVA_HOME']);
 
-  Future<void> _loadEnv() async =>
-      DotEnv(includePlatformEnvironment: true)..load();
+    final databaseConfig = DatabaseConnectionConfiguration(
+      host: env['databaseHost'] as String,
+      user: env['databaseUser'] as String,
+      password: env['databasePassword'] as String,
+      databaseName: env['databaseName'] as String,
+      port: int.tryParse(env['databasePort']!) ?? 0,
+    );
+
+    GetIt.I.registerSingleton(databaseConfig);
+  }
 }
