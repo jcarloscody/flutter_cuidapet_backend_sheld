@@ -18,6 +18,6 @@ final getIt2 = GetIt.instance;
     initializerName: r'$initGetIt',
     preferRelativeImports: true,
     asExtension: false)
-void configureDependencies2() =>
-    $initGetIt(getIt2); // deve rodar o ->> flutter pub run build_runner watch
+void configureDependencies2() => $initGetIt(
+    getIt2); // deve rodar o ->> flutter pub run build_runner watch ou flutter pub run build_runner watch --delete-conflicting-outputs
 
