@@ -9,13 +9,13 @@ class IDatabaseConnectionImpl implements IDatabaseConnection {
 
   IDatabaseConnectionImpl(
       {required DatabaseConnectionConfiguration configuration})
-      : this._configuration = configuration;
+      : _configuration = configuration;
 
   @override
   Future<MySqlConnection> openConnection() {
     return MySqlConnection.connect(ConnectionSettings(
       host: _configuration.host,
-      port: _configuration.port as int,
+      port: _configuration.port,
       user: _configuration.user,
       password: _configuration.password,
       db: _configuration.databaseName,
