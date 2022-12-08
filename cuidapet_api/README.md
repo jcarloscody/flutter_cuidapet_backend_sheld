@@ -9,6 +9,13 @@
 - build_runner: tem comando abaixo
 - shelf e 
 - shelf_router: gerenciador de rotas
+
+# Conceitos
+> Middleware
+- é um interceptor, ou seja, temos algo rodando entre as nossas requisições. ele é executado antes e após a requisição
+- pipeline: são processos dentro do shelf
+
+
 # launch.json
 ```
 "program": "${worlspaceFolderBasename}/bin/server.dart"

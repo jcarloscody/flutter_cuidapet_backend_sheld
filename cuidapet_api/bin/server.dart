@@ -22,7 +22,27 @@ void main(List<String> args) async {
   final ip = InternetAddress.anyIPv4;
 
   // Configure a pipeline that logs requests.
-  final handler = Pipeline().addMiddleware(logRequests()).addHandler(rota);
+  final handler =
+      Pipeline().addMiddleware(logRequests()).addMiddleware((innerHandler) {
+    print('Middleware 1 Executando');
+    return ((request) async {
+      print('Middleware 1 interno executado antes da requisição');
+      //return Response.ok('Nao passa ningue');
+      final resp =
+          await innerHandler(request); //passa para o proximo middleware
+      print('Middleware 1 interno executado após da requisição');
+      return resp;
+    });
+  }).addMiddleware((innerHandler) {
+    print('Middleware 2 Executando');
+    return ((request) async {
+      print('Middleware 2 interno executado antes da requisição');
+      final resp =
+          await innerHandler(request); //passa para o proximo middleware
+      print('Middleware 2 interno executado após da requisição');
+      return resp;
+    });
+  }).addHandler(rota);
 
 //apenas uns exemplos
   rota.get('/menu', menu);
