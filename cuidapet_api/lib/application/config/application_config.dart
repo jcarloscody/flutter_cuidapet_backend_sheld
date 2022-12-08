@@ -3,8 +3,10 @@ import 'package:cuidapet_api/application/logger/i_logger.dart';
 import 'package:cuidapet_api/application/logger/i_logger_impl.dart';
 import 'package:dotenv/dotenv.dart';
 import 'package:get_it/get_it.dart';
+import 'package:shelf/shelf.dart';
 import 'package:shelf_router/shelf_router.dart';
 
+import '../controller.dart';
 import '../routes/router_configure.dart';
 import 'injectables/service_locator_config.dart';
 
@@ -14,6 +16,19 @@ class ApplicationConfig {
     // print(env['url_banco_de_dados']);
     //print(env['JAVA_HOME']);
 
+    injetandoDependenciasManualmente(env);
+
+    //pegando todas as dependencias da aplicacao de forma arquitetural
+    configureDependencies();
+
+    configurandoRotasManualmente(rota);
+
+    //passando todas as rotas criadas nos modulos de forma arquitetural
+    final rotasConfig = RouterConfigure(rota);
+    rotasConfig.config();
+  }
+
+  static void injetandoDependenciasManualmente(DotEnv env) {
     final databaseConfig = DatabaseConnectionConfiguration(
       host: env['databaseHost'] as String,
       user: env['databaseUser'] as String,
@@ -22,14 +37,20 @@ class ApplicationConfig {
       port: int.tryParse(env['databasePort']!) ?? 0,
     );
 
-//injetando dependencia manualmente
+    //injetando dependencia manualmente
     GetIt.I.registerSingleton(databaseConfig);
-
     GetIt.I.registerLazySingleton<ILogger>(() => ILoggerImpl());
+  }
 
-    configureDependencies();
+  static void configurandoRotasManualmente(Router rota) {
+    //apenas uns exemplos manuais
+    rota.get('/menu', menu);
+    final controller = Controller();
+    rota.mount('/controller/', controller.rota);
+  }
 
-    final rotasConfig = RouterConfigure(rota);
-    rotasConfig.config();
+  //apenas um exemplo
+  static Response menu(Request request) {
+    return Response.ok("MENU");
   }
 }
