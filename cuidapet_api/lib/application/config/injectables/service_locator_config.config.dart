@@ -5,7 +5,7 @@
 // **************************************************************************
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
-import 'package:cuidapet_api/application/config/database_connection_configuration.dart'
+import 'package:cuidapet_api/application/config/bd/database_connection_configuration.dart'
     as _i3;
 import 'package:cuidapet_api/application/database/database_connection.dart'
     as _i5;

@@ -7,7 +7,8 @@
 - logger
 - injectable: para não ficar configurando class por class, basta apenas uma pequena anotação para tudo dá certo
 - build_runner: tem comando abaixo
-
+- shelf e 
+- shelf_router: gerenciador de rotas
 # launch.json
 ```
 "program": "${worlspaceFolderBasename}/bin/server.dart"
