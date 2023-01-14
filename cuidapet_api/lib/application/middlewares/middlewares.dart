@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:shelf/shelf.dart';
 
 abstract class Middlewares {
@@ -8,5 +10,5 @@ abstract class Middlewares {
     return execute;
   }
 
-  Future<Response> execute(Request request);
+  FutureOr<Response> execute(Request request);
 }

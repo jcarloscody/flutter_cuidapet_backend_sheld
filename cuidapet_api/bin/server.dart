@@ -2,13 +2,12 @@ import 'dart:async';
 import 'dart:io';
 
 import 'package:cuidapet_api/application/config/application_config.dart';
-import 'package:cuidapet_api/application/controller.dart';
 import 'package:cuidapet_api/application/middlewares/cors/cors_middleware.dart';
-import 'package:cuidapet_api/application/routes/router_configure.dart';
 import 'package:shelf/shelf.dart';
 import 'package:shelf/shelf_io.dart';
 import 'package:shelf_router/shelf_router.dart';
 
+final rota = Router();
 void main(List<String> args) async {
   //carregar as configurações do aplicativo
   ApplicationConfig.loadConfigApplication(rota: rota);
@@ -18,8 +17,6 @@ void main(List<String> args) async {
 
   initServer(handler);
 }
-
-final rota = Router();
 
 Handler handlers(Router rota) {
   final cors = CorsMiddleware();

@@ -11,7 +11,7 @@ class RouterConfigure {
   RouterConfigure(this._rota);
 
   // ignore: avoid_function_literals_in_foreach_calls
-  void config() => _rotas.forEach((element) {
-        element.configure(_rota);
+  void config() => _rotas.forEach((rota) {
+        rota.configure(_rota);
       });
 }
