@@ -2,7 +2,12 @@ import 'dart:async';
 import 'dart:io';
 
 import 'package:cuidapet_api/application/config/application_config.dart';
+import 'package:cuidapet_api/application/logger/i_logger.dart';
+import 'package:cuidapet_api/application/logger/i_logger_impl.dart';
 import 'package:cuidapet_api/application/middlewares/cors/cors_middleware.dart';
+import 'package:cuidapet_api/application/middlewares/security/security_middleware.dart';
+import 'package:get_it/get_it.dart';
+import 'package:logger/logger.dart';
 import 'package:shelf/shelf.dart';
 import 'package:shelf/shelf_io.dart';
 import 'package:shelf_router/shelf_router.dart';
@@ -20,6 +25,7 @@ void main(List<String> args) async {
 
 Handler handlers(Router rota) {
   final cors = CorsMiddleware();
+  final getIt = GetIt.I;
   final hand = Pipeline()
       .addMiddleware(logRequests())
       .addMiddleware((innerHandler) {
@@ -44,6 +50,7 @@ Handler handlers(Router rota) {
         });
       })
       .addMiddleware(cors.handler)
+      .addMiddleware(SecurityMiddleware(iLogger: getIt.get()).handler)
       .addHandler(rota);
 
   return hand;

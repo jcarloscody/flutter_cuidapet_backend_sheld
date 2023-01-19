@@ -30,6 +30,30 @@
   - Access-Control-Allow-Header: quais os parametros q o servidor aceita receber
   - 
 
+## JWT
+- json web token
+- define uma forma compacta e segura e independente para transmitir infor entre objetos json
+- podem ser assinado com um segredo  (algoritmo hmac) ou par de chaves pública/privada usando RSA ou ECDSA
+- AUTORIZAÇÃO: depois de conectado, cada requisicao do usuario  terá o jwt, permitindo que   o user acesse rotas e serviços e recursos permitidos com esse token.
+- SINGLE SIGN ON: recurso que vc faz login uma unica vez e vc utiliza este mesmo login em todas as aplicacoes . 
+- ESTRUTURA JWT
+  - Header: normalmente tem duas partes o tipo do token q é o jwt e o algoritmo de assinatura (hmac, sha256, rsa). então é passado para o Base64Url para formar a 1 parte
+   ```
+    {
+      "alg":"HS256",
+      "typ":"JWT"
+    }
+    ```
+  - Payload: são declaraões sobre entidades, usuarios, dados adicionais. nao sao obrigatorias.
+  ```
+  {
+    "sub":"21212",
+    "name":"John DOe",
+    "admin":true
+  }
+  ```
+  - Signature: parte mais importante. ela que vai validar, vai gerar uma hash unica para o nosso sistema. é a soma das partes codificadas, Signature = Algoritmo de hash(Base64Url(header) + Base64Url(payload) + senha secreta)
+  - exemplo avsoinvoaisnd.vaçosdnvoasndvonasodivnoasid.vaosidnvoansdovnoasdinv
 
 # launch.json
 ```

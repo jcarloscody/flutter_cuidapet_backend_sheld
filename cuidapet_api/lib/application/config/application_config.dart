@@ -10,9 +10,10 @@ import '../controller.dart';
 import '../routes/router_configure.dart';
 import 'injectables/service_locator_config.dart';
 
+var env = DotEnv(includePlatformEnvironment: true)..load();
+
 class ApplicationConfig {
   static void loadConfigApplication({required Router rota}) {
-    var env = DotEnv(includePlatformEnvironment: true)..load();
     // print(env['url_banco_de_dados']);
     //print(env['JAVA_HOME']);
 
