@@ -1,11 +1,13 @@
 import 'package:cuidapet_api/application/routes/i_routes.dart';
 import 'package:cuidapet_api/modules/tests/test_router.dart';
+import 'package:cuidapet_api/modules/user/user_router.dart';
 import 'package:shelf_router/shelf_router.dart';
 
 class RouterConfigure {
   final Router _rota;
   final List<IRouter> _rotas = [
     TestRouter(),
+    UserRouter(),
   ];
 
   RouterConfigure(this._rota);

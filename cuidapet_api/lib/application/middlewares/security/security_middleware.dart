@@ -16,7 +16,9 @@ class SecurityMiddleware extends Middlewares {
   SecurityMiddleware({
     required this.iLogger,
   });
-  final skypUrl = <SecuritySkipUrl>[];
+  final skypUrl = <SecuritySkipUrl>[
+    SecuritySkipUrl(url: '/auth/register', method: 'POST')
+  ];
   @override
   FutureOr<Response> execute(Request request) {
     if (skypUrl.contains(

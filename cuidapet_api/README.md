@@ -9,6 +9,9 @@
 - build_runner: tem comando abaixo
 - shelf e 
 - shelf_router: gerenciador de rotas
+  - `fu-shelfcontroller`
+- jaguar_jwt: ^3.0.0 --- cuida do JWT
+- 
 
 # Conceitos
 > Middleware

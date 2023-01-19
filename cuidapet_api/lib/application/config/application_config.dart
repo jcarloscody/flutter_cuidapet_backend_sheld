@@ -6,7 +6,7 @@ import 'package:get_it/get_it.dart';
 import 'package:shelf/shelf.dart';
 import 'package:shelf_router/shelf_router.dart';
 
-import '../controller.dart';
+import '../routes/manual/controller_manual.dart';
 import '../routes/router_configure.dart';
 import 'injectables/service_locator_config.dart';
 
